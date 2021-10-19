@@ -1,0 +1,17 @@
+.nav-bar {
+    background-color: black !important;
+    height: 100%;
+}
+
+.nav-flex {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+}
+
+.button {
+    color: white !important;
+    width: 100%;
+    height: 100%;
+}
