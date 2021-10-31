@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ShopContext } from "../../context/ShopContext";
 import { Product } from "../../models/Product";
 import { ObjectConverter } from "../../services/ObjectConverter";
@@ -10,31 +10,37 @@ const Shop = () => {
     const { products, setProducts } = useContext(ShopContext);
     const productClient = new ProductHttpClient();
     const converter = new ObjectConverter();
+    console.log(products);
 
     useEffect(() => {
         const tempProducts = [] as Product[];
-        productClient.fetchAll()
-            .then((fetchedArray: any) => {
-                fetchedArray.forEach((item: any) => {
-                    tempProducts.push(converter.jsonToProduct(item))
-                });
-            })
-        setProducts(tempProducts);
-    }, [])
+        if (products.length === 0) {
+            productClient.fetchAll()
+                .then((fetchedArray: any) => {
+                    fetchedArray.forEach((item: any) => {
+                        let product = converter.jsonToProduct(item);
+                        tempProducts.push(product)
+                    });
+                })
+                .then(() => setProducts(tempProducts))
+        }
+    }, [products])
 
     return (
         <div className="shop-view">
             <div className="products">
                 {
                     products.length > 0 ?
-                        products.map((product) => {
-                            <ProductCard
-                                product={product}
-                            />
+                        products.map((product, index) => {
+                            return (
+                                <ProductCard
+                                    product={product}
+                                />
+                            )
                         })
                         :
                         <div>
-                            All products sold out, please leave.
+                            Loading products...
                         </div>
                 }
             </div>

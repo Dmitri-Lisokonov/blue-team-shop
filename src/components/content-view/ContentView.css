@@ -4,6 +4,7 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 15fr;
+    background-color: #F9F6EE;
 }
 
 .view-wrapper {

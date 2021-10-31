@@ -1,11 +1,8 @@
-import { AppBar, Button, Toolbar } from '@mui/material';
+import { AppBar, Button } from '@mui/material';
 import React from 'react';
 import './Navbar.css';
 import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
+    BrowserRouter as Router
 } from "react-router-dom";
 
 
@@ -17,8 +14,8 @@ const Navbar = () => {
                 <Router>
                     <Button href="/shop" className="shop button">Shop</Button>
                     <Button href="/login" className="login button">Login</Button>
+                    <Button href="/dashboard" className="dashboard button">Dashboard</Button>
                     <Button href="/admin" className="admin button">Admin</Button>
-                    <Button href="/register" className="register button">Register</Button>
                 </Router>
             </div>
         </AppBar>

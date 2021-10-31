@@ -7,6 +7,11 @@
     height: 100%;
 }
 
+.login-title {
+    text-align: center;
+    padding: 5px;
+}
+
 .submit-login {
     width: 100%;
     padding: 10px !important;
@@ -20,4 +25,10 @@
 .password {
     width: 98%;
     padding: 5px !important;
+}
+
+.google-auth {  
+    display: flex;
+    padding: 10px;
+    justify-content: space-around;
 }
