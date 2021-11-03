@@ -1,10 +1,20 @@
-export class UserHttpClient {
-    public baseUrl: string = "https://localhost:44350/user/google/";
+import { ApiConfig } from "../config/ApiConfig";
 
-    public fetchByEmail(email: string) {
-        const path = email;
+export class UserHttpClient {
+    public config = new ApiConfig();
+    public baseUrl: string = this.config.url + 'user/';
+
+    public register(user: any) {
+        const path = 'register';
         return new Promise((resolve, reject) => {
-            fetch(this.baseUrl + path)
+            fetch(this.baseUrl + path, {
+                method: "POST",
+                body: JSON.stringify(user),
+                headers: {
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin": "*"
+                }
+            })
                 .then((res) => res.json())
                 .then((data) => {
                     resolve(data);
@@ -13,23 +23,15 @@ export class UserHttpClient {
         });
     }
 
-    public validateGoogleLogin(googleResponse: any, tryRegister: boolean) {
-        let path: string;
-        let payload = {
-            token: googleResponse.tokenId
-        }
-        if (tryRegister) {
-            path = "auth/register"
-        }
-        else {
-            path = "auth"
-        }
+    public login(user: any) {
+        const path = 'login';
         return new Promise((resolve, reject) => {
             fetch(this.baseUrl + path, {
                 method: "POST",
-                body: JSON.stringify(payload),
+                body: JSON.stringify(user),
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin": "*"
                 }
             })
                 .then((res) => res.json())

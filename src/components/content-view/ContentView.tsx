@@ -3,6 +3,7 @@ import Admin from '../admin/Admin';
 import Dashboard from '../dashboard/Dashboard';
 import Login from '../login/Login';
 import Navbar from '../navbar/Navbar';
+import Register from '../register/Register';
 import Shop from '../shop/Shop';
 import './ContentView.css';
 
@@ -27,6 +28,9 @@ const ContentView = () => {
                         </Route>
                         <Route path="/admin">
                             <Admin />
+                        </Route>
+                        <Route path="/register">
+                            <Register />
                         </Route>
                     </Switch>
                 </Router>

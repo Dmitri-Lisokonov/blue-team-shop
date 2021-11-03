@@ -2,3 +2,7 @@
     width: 35%;
     height: 35%;
 }
+
+.alert {
+    color: red;
+}

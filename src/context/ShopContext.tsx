@@ -7,12 +7,14 @@ export const ShopContext = createContext({} as IShopContext);
 
 export const ShopProvider = (props: { children: ReactNode }) => {
 
-    const [products, setProducts] = useState([] as Product[])
-    const [user, setUser] = useState({} as User)
+    const [products, setProducts] = useState([] as Product[]);
+    const [user, setUser] = useState({} as User);
+    const [userfetched, setUserFetched] = useState(false);
 
     const value = {
         products, setProducts,
-        user, setUser
+        user, setUser,
+        userfetched, setUserFetched,
     }
 
     return (

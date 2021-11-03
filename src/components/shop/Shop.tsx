@@ -10,17 +10,25 @@ const Shop = () => {
     const { products, setProducts } = useContext(ShopContext);
     const productClient = new ProductHttpClient();
     const converter = new ObjectConverter();
-    console.log(products);
+    const [alert, setAlert] = useState('');
 
     useEffect(() => {
         const tempProducts = [] as Product[];
         if (products.length === 0) {
             productClient.fetchAll()
-                .then((fetchedArray: any) => {
-                    fetchedArray.forEach((item: any) => {
-                        let product = converter.jsonToProduct(item);
-                        tempProducts.push(product)
-                    });
+                .then((res: any) => {
+                    console.log(res);
+                    if (res['status'] === 0) {
+                        const products: Product[] = JSON.parse(res['message'])
+                        products.forEach((item: any) => {
+                            let product = converter.jsonToProduct(item);
+                            tempProducts.push(product);
+                        });
+                    }
+                    else {
+
+                        setAlert(res['message'])
+                    }
                 })
                 .then(() => setProducts(tempProducts))
         }
@@ -34,13 +42,14 @@ const Shop = () => {
                         products.map((product, index) => {
                             return (
                                 <ProductCard
+                                    key={index}
                                     product={product}
                                 />
                             )
                         })
                         :
-                        <div>
-                            Loading products...
+                        <div className="">
+                            {alert}
                         </div>
                 }
             </div>

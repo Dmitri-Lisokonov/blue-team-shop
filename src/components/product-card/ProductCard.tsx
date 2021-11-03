@@ -1,9 +1,7 @@
-import { useEffect } from 'react';
 import { Product } from '../../models/Product';
 import './ProductCard.css';
 
 const ProductCard = (props: { product: Product }) => {
-    useEffect(() => console.log('hello from card'), [])
     return (
         <div className="card">
             <div className="container">

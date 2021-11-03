@@ -1,5 +1,8 @@
+import { ApiConfig } from "../config/ApiConfig";
+
 export class ProductHttpClient {
-    public baseUrl: string = "https://localhost:44350/product/";
+    public config = new ApiConfig();
+    public baseUrl: string = this.config.url + 'product/';;
 
     public fetchAll() {
         const path = "all"

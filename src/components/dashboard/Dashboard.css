@@ -1,0 +1,25 @@
+.dashboard {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+.dashboard-paper {
+    width: 50%;
+}
+.dashboard-card {
+    padding: 40px;
+}
+
+.logout {
+    width: 50%;
+    padding: 10px !important;
+}
+
+.dashboard-text {
+    margin-bottom: 20px;
+}
