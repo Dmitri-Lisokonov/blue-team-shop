@@ -27,4 +27,16 @@ export class ProductHttpClient {
                 .catch(reject);
         });
     }
+
+    public fetchSecret() {
+        const path = 'admin';
+        return new Promise((resolve, reject) => {
+            fetch(this.baseUrl + path)
+                .then((res) => res.json())
+                .then((data) => {
+                    resolve(data);
+                })
+                .catch(reject);
+        });
+    }
 }
