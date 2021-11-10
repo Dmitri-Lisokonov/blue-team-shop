@@ -28,10 +28,16 @@ export class ProductHttpClient {
         });
     }
 
-    public fetchSecret() {
+    public fetchSecret(token: string) {
         const path = 'admin';
+        const headers = {
+            authorization: "Bearer " + token
+        }
         return new Promise((resolve, reject) => {
-            fetch(this.baseUrl + path)
+            fetch(this.baseUrl + path, {
+                method: 'get',
+                headers: headers
+            })
                 .then((res) => res.json())
                 .then((data) => {
                     resolve(data);
