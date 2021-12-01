@@ -21,9 +21,7 @@ const Login = () => {
     const loginGoogleUser = (googleData: any) => {
         googleUserClient.Login(googleData)
             .then((res: any) => {
-                console.log(res);
                 if (res['status'] === 0) {
-                    console.log(res['message'])
                     let user: User = JSON.parse(res['message']);
                     localStorage.setItem('user', JSON.stringify(user));
                     setUserFetched(!userfetched);
@@ -47,7 +45,6 @@ const Login = () => {
             userClient.login(user)
                 .then((res: any) => {
                     if (res['status'] === 0) {
-                        console.log(res['message'])
                         let user: User = JSON.parse(res['message']);
                         localStorage.setItem('user', JSON.stringify(user));
                         setUserFetched(!userfetched);
@@ -71,7 +68,8 @@ const Login = () => {
                             <TextField id="filled-basic" label="Email Address" variant="filled" className="username" onChange={(event) => setEmail(event.target.value)} />
                             <TextField id="filled-basic" label="Password" variant="filled" className="password" onChange={(event) => setPassword(event.target.value)} />
                             <Button className="submit-login" onClick={loginUser}>Submit</Button>
-                            <div className="google-auth">
+                            <Button className="submit-login">Forgot Password?</Button>
+                            {/* <div className="google-auth">
                                 <GoogleLogin
                                     clientId={"159151186149-jbv6ar6d2m1v8ep15s8a82akngkd8e74.apps.googleusercontent.com"}
                                     buttonText="Continue with Google account"
@@ -79,7 +77,7 @@ const Login = () => {
                                     onFailure={() => setAlert("Google login failed, please try again")}
                                     cookiePolicy={'single_host_origin'}
                                 />
-                            </div>
+                            </div> */}
                         </>
                         :
                         <div className="already-loggedin">

@@ -17,7 +17,6 @@ const Shop = () => {
         if (products.length === 0) {
             productClient.fetchAll()
                 .then((res: any) => {
-                    console.log(res);
                     if (res['status'] === 0) {
                         const products: Product[] = JSON.parse(res['message'])
                         products.forEach((item: any) => {

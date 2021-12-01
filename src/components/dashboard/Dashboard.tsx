@@ -1,5 +1,5 @@
 import { Button, Paper } from '@mui/material';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { ShopContext } from '../../context/ShopContext';
 import { User } from '../../models/User';
@@ -7,7 +7,7 @@ import './Dashboard.css';
 
 const Dashboard = () => {
     const { user, setUser } = useContext(ShopContext);
-    const [alert] = useState('');
+    const [alert, setAlert] = useState('');
     let history = useHistory();
 
     const logout = () => {
@@ -15,6 +15,13 @@ const Dashboard = () => {
         setUser({} as User);
         history.push('/shop');
     }
+
+    useEffect(() => {
+        const json = localStorage.getItem('user');
+        if (!json) {
+            setAlert('You are not logged in')
+        }
+    }, [])
 
     return (
         <div className="dashboard">

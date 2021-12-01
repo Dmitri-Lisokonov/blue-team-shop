@@ -5,11 +5,13 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { ShopContext } from '../../context/ShopContext';
 import { User } from '../../models/User';
 import { ObjectConverter } from '../../services/ObjectConverter';
+import { UserHttpClient } from '../../services/UserHttpClient';
 
 
 const Navbar = () => {
     const { user, setUser, userfetched } = useContext(ShopContext);
     const converter = new ObjectConverter();
+    const userClient = new UserHttpClient();
 
     const logout = () => {
         localStorage.removeItem('user');
@@ -23,6 +25,30 @@ const Navbar = () => {
             setUser(converter.jsonToUser(userString));
         }
     }, [userfetched])
+
+    useEffect(() => {
+        try {
+            const json = localStorage.getItem('user');
+            if (json) {
+                const user = JSON.parse(json);
+                userClient.checkSession(user['Token'])
+                    .then((res: any) => {
+                        try {
+                            if (res['status'] !== 0) {
+                                localStorage.removeItem('user');
+                            }
+                        }
+                        catch (err) {
+                            localStorage.removeItem('user');
+                        }
+
+                    })
+            }
+        }
+        catch (err) {
+            console.error(err);
+        }
+    }, [])
 
     return (
         <AppBar position="static" className="nav-bar">

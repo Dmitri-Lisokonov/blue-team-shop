@@ -41,4 +41,24 @@ export class UserHttpClient {
                 .catch(reject);
         });
     }
+
+    public checkSession(token: string) {
+        const path = 'session';
+        return new Promise((resolve, reject) => {
+            fetch(this.baseUrl + path, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin": "*",
+                    "Authorization": "Bearer " + token
+                }
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    resolve(data);
+                })
+                .catch(reject);
+        });
+    }
+
 }
