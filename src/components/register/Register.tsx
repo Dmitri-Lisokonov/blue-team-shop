@@ -25,11 +25,18 @@ const Register = () => {
             httpClient.register(user)
                 .then((res: any) => {
                     if (res['status'] === 1) {
-                        setAlert(res['message'])
+                        setAlert(res['message']);
                     }
                     else {
-                        setAlert('')
-                        history.push('/shop');
+                        httpClient.sendVerificationEmail(user)
+                            .then((res: any) => {
+                                if (res['status'] === 1) {
+                                    setAlert(res['message']);
+                                }
+                                else {
+                                    history.push('/shop');
+                                }
+                            })
                     }
                 })
         }
