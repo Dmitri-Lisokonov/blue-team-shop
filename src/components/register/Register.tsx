@@ -48,8 +48,8 @@ const Register = () => {
                     </div>
                     <TextField id="filled-basic1" label="Email Address" variant="filled" className="username" onChange={(event) => setEmail(event.target.value)} />
                     <TextField id="filled-basic2" label="Full Name" variant="filled" className="password" onChange={(event) => setUsername(event.target.value)} />
-                    <TextField id="filled-basic3" label="Password" variant="filled" className="username" onChange={(event) => setPassword(event.target.value)} />
-                    <TextField id="filled-basic4" label="Confirm Password" variant="filled" className="password" onChange={(event) => setConfirmPassword(event.target.value)} />
+                    <TextField id="filled-basic3" label="Password" variant="filled" className="username" type="password" onChange={(event) => setPassword(event.target.value)} />
+                    <TextField id="filled-basic4" label="Confirm Password" variant="filled" className="password" type="password" onChange={(event) => setConfirmPassword(event.target.value)} />
                     <Button className="submit-login" onClick={registerUser}>Submit</Button>
                 </Paper>
             </div>

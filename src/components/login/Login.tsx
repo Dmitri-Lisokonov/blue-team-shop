@@ -66,7 +66,7 @@ const Login = () => {
                         <>
                             <div className="alert">{alert}</div>
                             <TextField id="filled-basic" label="Email Address" variant="filled" className="username" onChange={(event) => setEmail(event.target.value)} />
-                            <TextField id="filled-basic" label="Password" variant="filled" className="password" onChange={(event) => setPassword(event.target.value)} />
+                            <TextField id="filled-basic" label="Password" variant="filled" className="password" type="password" onChange={(event) => setPassword(event.target.value)} />
                             <Button className="submit-login" onClick={loginUser}>Submit</Button>
                             <Button className="submit-login">Forgot Password?</Button>
                             {/* <div className="google-auth">
