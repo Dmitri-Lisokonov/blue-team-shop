@@ -1,4 +1,5 @@
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
+import AccountConfirmed from '../account-confirmed/AccountConfimed';
 import Admin from '../admin/Admin';
 import Dashboard from '../dashboard/Dashboard';
 import Login from '../login/Login';
@@ -38,6 +39,7 @@ const ContentView = () => {
                             <PasswordForgot />
                         </Route>
                         <Route path="/reset/:token" component={PasswordReset} />
+                        <Route path="/activate/:token" component={AccountConfirmed} />
                     </Switch>
                 </Router>
             </div>

@@ -62,6 +62,24 @@ export class UserHttpClient {
         });
     }
 
+    public verifyEmail(token: string) {
+        const path = 'verify/' + token;
+        return new Promise((resolve, reject) => {
+            fetch(this.baseUrl + path, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin": "*",
+                }
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    resolve(data);
+                })
+                .catch(reject);
+        });
+    }
+
     public sendVerificationEmail(user: any) {
         const path = 'verify';
         return new Promise((resolve, reject) => {
