@@ -3,6 +3,8 @@ import Admin from '../admin/Admin';
 import Dashboard from '../dashboard/Dashboard';
 import Login from '../login/Login';
 import Navbar from '../navbar/Navbar';
+import PasswordForgot from '../password-forgot/PasswordForgot';
+import PasswordReset from '../password-reset/PasswordReset';
 import Register from '../register/Register';
 import Shop from '../shop/Shop';
 import './ContentView.css';
@@ -32,6 +34,10 @@ const ContentView = () => {
                         <Route path="/register">
                             <Register />
                         </Route>
+                        <Route path="/recovery">
+                            <PasswordForgot />
+                        </Route>
+                        <Route path="/reset/:token" component={PasswordReset} />
                     </Switch>
                 </Router>
             </div>

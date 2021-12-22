@@ -81,4 +81,43 @@ export class UserHttpClient {
         });
     }
 
+    public forgotPassword(user: any) {
+        const path = 'forgotpassword';
+        return new Promise((resolve, reject) => {
+            fetch(this.baseUrl + path, {
+                method: "POST",
+                body: JSON.stringify(user),
+                headers: {
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin": "*"
+                }
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    resolve(data);
+                })
+                .catch(reject);
+        });
+    }
+
+
+    public resetPassword(user: any, token: string) {
+        const path = token;
+        return new Promise((resolve, reject) => {
+            fetch(this.baseUrl + path, {
+                method: "POST",
+                body: JSON.stringify(user),
+                headers: {
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin": "*"
+                }
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    resolve(data);
+                })
+                .catch(reject);
+        });
+    }
+
 }
