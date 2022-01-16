@@ -41,8 +41,8 @@ const PasswordReset = () => {
                     <>
                         <div>{response}</div>
                         <div className="alert">{alert}</div>
-                        <TextField id="filled-basic" label="Password" variant="filled" className="username" onChange={(event) => setPassword(event.target.value)} />
-                        <TextField id="filled-basic" label="Confirm Password" variant="filled" className="username" onChange={(event) => setPasswordConfirm(event.target.value)} />
+                        <TextField id="filled-basic" label="Password" variant="filled" className="username" type="password" onChange={(event) => setPassword(event.target.value)} />
+                        <TextField id="filled-basic" label="Confirm Password" variant="filled" className="username" type="password" onChange={(event) => setPasswordConfirm(event.target.value)} />
                         <Button className="submit-login" onClick={resetPassword}>Reset Password</Button>
                     </>
                 </Paper>

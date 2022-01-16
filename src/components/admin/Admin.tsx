@@ -1,3 +1,4 @@
+import { Paper } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { ProductHttpClient } from '../../services/ProductHttpClient';
 import './Admin.css';
@@ -35,8 +36,12 @@ const Admin = () => {
 
     return (
         <div className="admin">
-            {response}
-            {alert}
+            <div>
+                <Paper className="card">
+                    {response}
+                    {alert}
+                </Paper>
+            </div>
         </div>
     )
 }

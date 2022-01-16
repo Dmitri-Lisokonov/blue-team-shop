@@ -2,7 +2,8 @@
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
     width: 100%;
-    margin: 10px;
+    margin: 15px;
+    padding: 10px;
     background-color: white;
   }
   
@@ -11,5 +12,27 @@
   }
   
   .container {
+    display: flex;
     padding: 2px 16px;
+  }
+  
+  .product-info {
+    width: 50%;
+    align-items: center;
+  }
+  .product-header {
+    width: 30%;
+  }
+  .product-price {
+    width: 50%;
+  }
+  .product-body {
+    display: flex;
+    align-items: center;
+    width: 80%;
+  }
+
+  .product-img {
+    width: 50%;
+    object-fit: contain;
   }
